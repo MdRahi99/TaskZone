@@ -43,10 +43,10 @@ const Home = () => {
 
     return (
         <div className='grid grid-cols-12 my-12 gap-6'>
-            <div className="grid col-span-12 gap-8 mx-6 lg:mx-0 lg:col-span-4">
+            <div className="grid col-span-12 mx-6 lg:mx-0 lg:col-span-4">
                 {
                     tasks.length > 0 ?
-                        <>
+                        <div>
                             <h1 className='text-2xl text-center font-serif font-semibold p-2 border-b-4 rounded-md border-black mb-3'>Your Tasks</h1>
                             {
                                 tasks.map((task, index) => {
@@ -58,14 +58,21 @@ const Home = () => {
                                     </ViewTasks>
                                 })
                             }
-                        </>
+                        </div>
                         :
-                       <LeftBanner />
+                        <LeftBanner />
                 }
             </div>
 
             <div className='hidden lg:block col-span-12 lg:col-span-8 mx-6 lg:mx-0'>
-                <img className='rounded h-96 w-full' src={banner} alt="" />
+                {
+                    tasks.length > 0 ?
+                    <div>
+                        
+                    </div>
+                    :
+                    <img className='rounded h-96 w-full' src={banner} alt="" />
+                }
             </div>
         </div>
     );
