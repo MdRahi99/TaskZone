@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewTasks from '../Tasks/ViewTasks';
-import { Link } from 'react-router-dom';
+import banner from '../../Assets/img/banner-1.jpg';
 import LeftBanner from './LeftBanner';
 
 const Home = () => {
@@ -42,8 +42,8 @@ const Home = () => {
     };
 
     return (
-        <div className='grid grid-cols-12 my-12'>
-            <div className="grid col-span-12 gap-8 mx-6 lg:mx-0 lg:col-span-3">
+        <div className='grid grid-cols-12 my-12 gap-6'>
+            <div className="grid col-span-12 gap-8 mx-6 lg:mx-0 lg:col-span-4">
                 {
                     tasks.length > 0 ?
                         <>
@@ -64,8 +64,8 @@ const Home = () => {
                 }
             </div>
 
-            <div className='col-span-12 lg:col-span-9 mx-6 lg:mx-0'>
-
+            <div className='hidden lg:block col-span-12 lg:col-span-8 mx-6 lg:mx-0'>
+                <img className='rounded h-96 w-full' src={banner} alt="" />
             </div>
         </div>
     );
