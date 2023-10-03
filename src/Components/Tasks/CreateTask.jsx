@@ -33,8 +33,8 @@ const CreateTask = () => {
 
     return (
         <div className='my-12 w-full lg:w-1/3 mx-auto'>
-            <div className='mb-4 shadow-md p-6 text-center border-dashed border-x-4 border-black rounded-xl mx-4 lg:mx-0'>
-                <h1 className='text-2xl border-y-2 p-2 border-dashed border-black rounded-b-2xl font-mono font-semibold'>Add Tasks</h1>
+            <div className='mb-4 shadow-md p-2 text-center rounded-xl mx-4 lg:mx-0'>
+                <h1 className='text-2xl text-center font-serif font-semibold p-2 border-b-4 rounded-md border-black mb-3'>Add Tasks</h1>
             </div>
 
             <div className='shadow-xl p-10 flex flex-col gap-4'>

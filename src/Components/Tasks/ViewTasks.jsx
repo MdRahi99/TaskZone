@@ -10,7 +10,7 @@ const ViewTasks = ({ task, index, handleDelete }) => {
     return (
         <div className='flex items-center justify-between'>
             <Link to={`/task/:${_id}`}>
-                <h1 className='w-52 hover:bg-black hover:text-white rounded text-xl px-2 py-1 font-mono font-semibold'>
+                <h1 className='w-64 hover:bg-black hover:text-white rounded text-xl px-2 py-1 font-mono font-semibold'>
                     {`${index}. ${text}`}
                 </h1>
             </Link>
