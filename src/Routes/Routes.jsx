@@ -4,6 +4,7 @@ import Main from "../Layout/Main";
 import Contact from "../Components/Contact/Contact";
 import Error from "../Components/Error/Error";
 import CreateTask from "../Components/Tasks/CreateTask";
+import UpdateTask from "../Components/Tasks/UpdateTask";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
       {
         path: '/add-task',
         element: <CreateTask />
+      },
+      {
+        path: '/update-task/:id',
+        loader: ({params}) => fetch(`http://localhost:5000/task/${params.id}`),
+        element: <UpdateTask />
       },
       {
         path: '/contact',

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewTasks from '../Tasks/ViewTasks';
-import banner from '../../Assets/img/banner-1.jpg';
 import LeftBanner from './LeftBanner';
 
 const Home = () => {
@@ -42,38 +41,25 @@ const Home = () => {
     };
 
     return (
-        <div className='grid grid-cols-12 my-12 gap-6'>
-            <div className="grid col-span-12 mx-6 lg:mx-0 lg:col-span-4">
-                {
-                    tasks.length > 0 ?
-                        <div>
-                            <h1 className='text-2xl text-center font-serif font-semibold p-2 border-b-4 rounded-md border-black mb-3'>Your Tasks</h1>
-                            {
-                                tasks.map((task, index) => {
-                                    return <ViewTasks
-                                        key={task._id}
-                                        task={task}
-                                        index={index + 1}
-                                        handleDelete={handleDelete}                            >
-                                    </ViewTasks>
-                                })
-                            }
-                        </div>
-                        :
-                        <LeftBanner />
-                }
-            </div>
-
-            <div className='hidden lg:block col-span-12 lg:col-span-8 mx-6 lg:mx-0'>
-                {
-                    tasks.length > 0 ?
-                    <div>
-                        
-                    </div>
+        <div className="my-12 mx-6">
+            {
+                !tasks.length > 0 ?
+                    <LeftBanner />
                     :
-                    <img className='rounded h-96 w-full' src={banner} alt="" />
-                }
-            </div>
+                    <div className='w-full lg:w-3/6 mx-auto'>
+                        <h1 className='text-2xl text-center font-serif font-semibold p-2 border-b-4 rounded-md border-black mb-3'>Your Tasks</h1>
+                        {
+                            tasks.map((task, index) => {
+                                return <ViewTasks
+                                    key={task._id}
+                                    task={task}
+                                    index={index + 1}
+                                    handleDelete={handleDelete}                            >
+                                </ViewTasks>
+                            })
+                        }
+                    </div>
+            }
         </div>
     );
 };

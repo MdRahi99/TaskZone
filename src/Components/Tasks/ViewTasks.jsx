@@ -15,9 +15,11 @@ const ViewTasks = ({ task, index, handleDelete }) => {
                 </h1>
             </Link>
             <div className='flex items-center justify-between gap-3'>
-                <button>
-                    <FiEdit className='font-bold text-xl hover:text-emerald-500' />
-                </button>
+                <Link to={`/update-task/${_id}`}>
+                    <button>
+                        <FiEdit className='font-bold text-xl hover:text-emerald-500' />
+                    </button>
+                </Link>
 
                 <button onClick={() => handleDelete(_id)}>
                     <FiDelete className='font-bold text-xl hover:text-orange-600' />
