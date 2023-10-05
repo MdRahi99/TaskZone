@@ -43,10 +43,10 @@ const Home = () => {
                                     text: 'Deleted Successfully!!!',
                                     confirmButtonText: 'Ok'
                                 })
+                                const remaining = tasks.filter(task => task._id !== _id);
+                                setTasks(remaining);
                             }
                         })
-                    const remaining = tasks.filter(task => task._id !== _id);
-                    setTasks(remaining);
                 }
                 else if (result.isDenied) {
                     Swal.fire('Changes are not saved', '', 'info')
