@@ -23,31 +23,33 @@ const Home = () => {
     }, []);
 
     const handleDelete = (_id) => {
-        fetch(`https://task-zone-server.onrender.com/task/${_id}`, {
-            method: 'DELETE'
+        Swal.fire({
+            title: 'Are you sure you want to delete?',
+            showCancelButton: true,
+            confirmButtonText: 'Ok',
+            denyButtonText: `Cancel`,
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    Swal.fire({
-                        title: 'Are you sure you want to delete?',
-                        showCancelButton: true,
-                        confirmButtonText: 'Ok',
-                        denyButtonText: `Cancel`,
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success',
-                                text: 'Deleted Successfully!!!',
-                                confirmButtonText: 'Ok'
-                            })
-                            const remaining = tasks.filter(task => task._id !== _id);
-                            setTasks(remaining);
-                        } else if (result.isDenied) {
-                            Swal.fire('Changes are not saved', '', 'info')
-                        }
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`https://task-zone-server.onrender.com/task/${_id}`, {
+                        method: 'DELETE'
                     })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'Deleted Successfully!!!',
+                                    confirmButtonText: 'Ok'
+                                })
+                            }
+                        })
+                    const remaining = tasks.filter(task => task._id !== _id);
+                    setTasks(remaining);
+                }
+                else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
                 }
             })
             .catch(error => {
