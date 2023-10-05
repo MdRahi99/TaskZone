@@ -13,7 +13,7 @@ const CreateTask = () => {
 
     const addTask = () => {
         try {
-            fetch('http://localhost:5000/tasks', {
+            fetch('https://task-zone-server.onrender.com/tasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

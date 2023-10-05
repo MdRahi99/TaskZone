@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Home = () => {
 
     const [tasks, setTasks] = useState([]);
-    const taskApi = 'http://localhost:5000/tasks';
+    const taskApi = 'https://task-zone-server.onrender.com/tasks';
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +23,7 @@ const Home = () => {
     }, []);
 
     const handleDelete = (_id) => {
-        fetch(`http://localhost:5000/task/${_id}`, {
+        fetch(`https://task-zone-server.onrender.com/task/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

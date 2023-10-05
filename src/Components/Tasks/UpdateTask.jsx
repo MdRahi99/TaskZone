@@ -14,7 +14,7 @@ const UpdateTask = () => {
         const text = form.text.value;
         const updatedTask = { text };
 
-        fetch(`http://localhost:5000/task/${_id}`, {
+        fetch(`https://task-zone-server.onrender.com/task/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
