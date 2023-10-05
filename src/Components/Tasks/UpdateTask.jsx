@@ -1,5 +1,6 @@
 import React from 'react';
 import { redirect, useLoaderData, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateTask = () => {
 
@@ -22,7 +23,12 @@ const UpdateTask = () => {
         })
             .then(res => res.json())
             .then(() => {
-                alert('Updated Successfully')
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Updated Successfully!!!',
+                    confirmButtonText: 'Ok'
+                  })
                 navigate('/')
             })
     };

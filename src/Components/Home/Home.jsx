@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ViewTasks from '../Tasks/ViewTasks';
 import LeftBanner from './LeftBanner';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
 
@@ -26,13 +28,26 @@ const Home = () => {
         })
             .then(res => res.json())
             .then(data => {
-                const isConfirmed = window.confirm("Are you sure you want to delete?");
-                if (isConfirmed) {
-                    if (data) {
-                        alert('Task Deleted Successfully!!!')
-                        const remaining = tasks.filter(task => task._id !== _id);
-                        setTasks(remaining);
-                    }
+                if (data) {
+                    Swal.fire({
+                        title: 'Are you sure you want to delete?',
+                        showCancelButton: true,
+                        confirmButtonText: 'Ok',
+                        denyButtonText: `Cancel`,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Deleted Successfully!!!',
+                                confirmButtonText: 'Ok'
+                            })
+                            const remaining = tasks.filter(task => task._id !== _id);
+                            setTasks(remaining);
+                        } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                        }
+                    })
                 }
             })
             .catch(error => {
@@ -58,6 +73,11 @@ const Home = () => {
                                 </ViewTasks>
                             })
                         }
+                        <div className='w-40 mx-auto mt-20'>
+                            <Link className='px-4 py-2 rounded text-md font-mono hover:bg-[#424242] bg-black text-white' to='/add-task'>
+                                Add More Task
+                            </Link>
+                        </div>
                     </div>
             }
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const CreateTask = () => {
 
@@ -22,7 +23,12 @@ const CreateTask = () => {
                 .then((res) => res.json())
                 .then(() => {
                     setNewTitle('')
-                    alert('Task Added')
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Task Added Successfully!!!',
+                        confirmButtonText: 'Ok'
+                      })
                     navigate('/')
                 })
         }
